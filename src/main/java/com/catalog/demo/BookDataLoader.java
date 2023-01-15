@@ -5,6 +5,7 @@ import com.catalog.domain.BookRepository;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.annotation.Profile;
 import org.springframework.context.event.EventListener;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -12,9 +13,11 @@ import org.springframework.stereotype.Component;
 public class BookDataLoader {
 
     private final BookRepository bookRepository;
+    private final Environment environment;
 
-    public BookDataLoader(BookRepository bookRepository) {
+    public BookDataLoader(BookRepository bookRepository, Environment environment) {
         this.bookRepository = bookRepository;
+        this.environment = environment;
     }
 
     @EventListener(ApplicationReadyEvent.class)
