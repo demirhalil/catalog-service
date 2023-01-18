@@ -1,9 +1,5 @@
 package com.catalog.domain;
 
-import com.catalog.domain.BookAlreadyExistsException;
-import com.catalog.domain.BookNotFoundException;
-import com.catalog.domain.BookRepository;
-import com.catalog.domain.Book;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -38,10 +34,14 @@ public class BookService {
         return bookRepository.findByIsbn(isbn)
                 .map(existingBook -> {
                     var bookToUpdate = new Book(
+                            existingBook.id(),
                             existingBook.isbn(),
                             book.title(),
                             book.author(),
-                            book.price()
+                            book.price(),
+                            existingBook.version(),
+                            existingBook.createdDate(),
+                            existingBook.lastModifiedDate()
                     );
                     return bookRepository.save(bookToUpdate);
                 })
