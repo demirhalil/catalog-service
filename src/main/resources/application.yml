@@ -21,6 +21,11 @@ spring:
     hikari:
       connection-timeout: 2000
       maximum-pool-size: 5
-  sql:
-    init:
-      mode: always
+  flyway:
+    baseline-on-migrate: true
+  jpa:
+    hibernate:
+      ddl-auto: create
+#  sql:
+#    init:
+#      mode: always

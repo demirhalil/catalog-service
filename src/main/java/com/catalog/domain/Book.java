@@ -16,6 +16,8 @@ public record Book(
 
         @Id
         Long id,
+
+        String publisher,
         @NotBlank(message = "The book ISBN must be defined.")
         @Pattern(
                 regexp = "^[0-9]{10,13}$",
@@ -37,7 +39,7 @@ public record Book(
         @LastModifiedDate
         Instant lastModifiedDate
 ) {
-        public static Book of(String isbn, String title, String author, Double price) {
-                return new Book(null, isbn, title, author, price, 0, null, null);
+        public static Book of(String isbn, String title, String author, Double price, String publisher) {
+                return new Book(null,publisher, isbn, title, author, price, 0, null, null);
         }
 }
