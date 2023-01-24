@@ -1,3 +1,4 @@
+
 plugins {
     id 'java'
     id 'org.springframework.boot' version '3.0.1'
@@ -47,6 +48,18 @@ dependencyManagement {
     }
 }
 
+bootBuildImage {
+    imageName = "ghcr.io/demirhalil/${project.name}"
+    environment = ["BP_JVM_VERSION": "17.*"]
+
+    docker {
+            publishRegistry {
+                url = project.findProject("registry.Url")
+                username = project.findProject("registry.Username")
+                token = project.findProject("secrets.GITHUB_PAT")
+            }
+    }
+}
 bootRun {
     systemProperty 'spring.profiles.active', 'testdata'
 }
