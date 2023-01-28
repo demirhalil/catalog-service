@@ -49,7 +49,7 @@ dependencyManagement {
 }
 
 bootBuildImage {
-    imageName = "ghcr.io/demirhalil/${project.name}"
+    imageName = "${project.name}"
     environment = ["BP_JVM_VERSION": "17.*"]
 
     docker {
