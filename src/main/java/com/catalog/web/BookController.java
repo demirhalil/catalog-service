@@ -3,9 +3,11 @@ package com.catalog.web;
 import com.catalog.domain.Book;
 import com.catalog.domain.BookService;
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+@Slf4j
 @RestController
 @RequestMapping("/books")
 public class BookController {
@@ -17,6 +19,7 @@ public class BookController {
 
     @GetMapping
     public Iterable<Book> get() {
+        log.info("Retrieving books from remote repository");
         return bookService.viewBookList();
     }
 

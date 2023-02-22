@@ -16,7 +16,6 @@ public record Book(
 
         @Id
         Long id,
-
         String publisher,
         @NotBlank(message = "The book ISBN must be defined.")
         @Pattern(
@@ -33,7 +32,6 @@ public record Book(
         Double price,
         @Version
         int version,
-
         @CreatedDate
         Instant createdDate,
         @LastModifiedDate
